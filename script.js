@@ -1,8 +1,6 @@
 'use strict';
-console.log('test')
 
 const bookList = [
-    //En array med 2 objekt varje objekt har ett id 
     {
         id: 1,
         author: 'Charles Dickens',
@@ -17,22 +15,34 @@ const bookList = [
 
 const searchInput = null;
 
-
-//funktions uttryck
+// Ta emot/läsa av värdert i fältet i input  
+// skicka det till en annan funktion searchBooks
+// searchBooks returnerar en filtrerad lista
+// Filtrerade listan skickas till renderBookList
 function handleKeyPress(input) {
-    // Ta emot/läsa av värdert i fältet i input  
-    // skicka det till en annan funktion searchBooks
-    // searchBooks returnerar en filtrerad lista
-    // Filtrerade listan skickas till renderlist
 
    searchBooks(input, bookList);
 };
 
-function searchBooks(searchTerm, bookList) {
-//
-
+//Loop igenom bookList
+// För varje varv i loopen, ta det aktuella elementet (boke)
+// jämför titeln med söktermen
+// Om söktermen finns någonstans i titteln lägg till elementet i en ny lista (filteredList)
+// Retur filteredList eller renderBookList
+function searchBooks(searchTerm) {
+    let filteredList= [];
+    for(let i = 0; i < bookList.length; i++) {
+        const title = bookList[i].title.toLowerCase();
+        if(title.indexOf(searchTerm.toLowerCase()) > 0){
+            filteredList.push(bookList[0]);
+        }
+    }
+    renderBookList(filteredList);
 }
 
-function renderlist() {
+handleKeyPress('t');
 
+//Element i html listan visas/döljs beroende på listans innehåll.
+function renderBookList(list) {
+    console.log(list)
 }
