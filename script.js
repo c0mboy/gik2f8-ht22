@@ -2,16 +2,16 @@
 
 const bookList = [
     {
-        id: 1,
-        author: 'Charles Dickens',
-        title:'Oliver Twist'
+      id: 1,
+      author: "Charles Dickens",
+      title: "Oliver Twist",
     },
     {
-        id: 2,
-        author: 'William Shakespear',
-        title: 'Hamlet'
+      id: 2,
+      author: "William Shakespear",
+      title: "Hamlet",
     }
-];
+  ];
 
 const searchInput = null;
 
@@ -21,7 +21,7 @@ const searchInput = null;
 // Filtrerade listan skickas till renderBookList
 function handleKeyPress(input) {
 
-   searchBooks(input, bookList);
+   searchBooks(input);
 };
 
 //Loop igenom bookList
@@ -29,18 +29,20 @@ function handleKeyPress(input) {
 // jämför titeln med söktermen
 // Om söktermen finns någonstans i titteln lägg till elementet i en ny lista (filteredList)
 // Retur filteredList eller renderBookList
-function searchBooks(searchTerm) {
-    let filteredList= [];
-    for(let i = 0; i < bookList.length; i++) {
-        const title = bookList[i].title.toLowerCase();
-        if(title.indexOf(searchTerm.toLowerCase()) > 0){
-            filteredList.push(bookList[0]);
-        }
-    }
-    renderBookList(filteredList);
-}
 
-handleKeyPress('t');
+
+function searchBooks(searchTerm) {
+    let filteredList = [];
+      for (let i = 0; i < bookList.length; i++) {
+        const title = bookList[i].title.toLowerCase();
+        if (title.indexOf(searchTerm.toLowerCase()) >= 0) {
+          filteredList.push(bookList[i]);
+        }
+      }
+      renderBookList(filteredList);
+    }
+
+handleKeyPress('e');
 
 //Element i html listan visas/döljs beroende på listans innehåll.
 function renderBookList(list) {
