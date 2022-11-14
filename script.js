@@ -1,3 +1,4 @@
+//import bookList from "./bookspack";
 "use strict";
 
 const bookList = [
@@ -13,23 +14,29 @@ const bookList = [
   },
 ];
 
-const searchInput = null;
+/* Hur man kommer in i dom och hämtar sök fältet
+const searchInput = document.children[0].children[1].children[1].children[1];*/
+const searchField = document.getElementById("searchField");
+console.log(searchField)
 
-// Ta emot/läsa av värdert i fältet i input
-// skicka det till en annan funktion searchBooks
-// searchBooks returnerar en filtrerad lista
-// Filtrerade listan skickas till renderBookList
-function handleKeyPress(input) {
-  searchBooks(input);
+/*  keydown keyup */
+searchField.addEventListener("keyup", handleKeyPress);
+
+function handleKeyPress(e) {
+  // Ta emot/läsa av värdert i fältet i input
+  // skicka det till en annan funktion searchBooks
+  // searchBooks returnerar en filtrerad lista
+  // Filtrerade listan skickas till renderBookList
+  searchBooks(e.target.value);
 }
 
-//Loop igenom bookList
-// För varje varv i loopen, ta det aktuella elementet (boke)
-// jämför titeln med söktermen
-// Om söktermen finns någonstans i titteln lägg till elementet i en ny lista (filteredList)
-// Retur filteredList eller renderBookList
 
 function searchBooks(searchTerm) {
+  //Loop igenom bookList
+  // För varje varv i loopen, ta det aktuella elementet (boke)
+  // jämför titeln med söktermen
+  // Om söktermen finns någonstans i titteln lägg till elementet i en ny lista (filteredList)
+  // Retur filteredList eller renderBookList
   let filteredList = [];
   for (let i = 0; i < bookList.length; i++) {
     const title = bookList[i].title.toLowerCase();
@@ -40,7 +47,7 @@ function searchBooks(searchTerm) {
   renderBookList(filteredList);
 }
 
-handleKeyPress("e");
+
 
 //Element i html listan visas/döljs beroende på listans innehåll.
 function renderBookList(list) {
