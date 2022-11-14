@@ -12,6 +12,11 @@ const bookList = [
     author: "William Shakespear",
     title: "Hamlet",
   },
+  {
+    id: 3,
+    author: "Sebastian Speles",
+    title: "Songs from Livlong",
+  },
 ];
 
 /* Hur man kommer in i dom och hämtar sök fältet
