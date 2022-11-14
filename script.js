@@ -47,8 +47,6 @@ function searchBooks(searchTerm) {
   renderBookList(filteredList);
 }
 
-
-
 function renderBookList(bookList) {
   //Element i html listan visas/döljs beroende på listans innehåll.
         
